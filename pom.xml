@@ -30,6 +30,7 @@
         <module>shop-admin-app</module>
         <module>shop-backend-api-app</module>
         <module>picture-service</module>
+        <module>picture-app</module>
         <module>spring-eureka</module>
         <module>spring-cloud-config</module>
         <module>spring-cloud-gateway</module>
