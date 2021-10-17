@@ -1,6 +1,9 @@
 GET http://localhost:8888/shop_backend_api/dev
 
 ###
+GET http://localhost:8888/picture_app/dev
+
+###
 
 GET http://localhost:8888/config/application.properties
 
