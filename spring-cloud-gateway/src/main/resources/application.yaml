@@ -17,7 +17,7 @@ spring:
 #          uri: lb://SHOP-PICTURE-SERVICE
 #          predicates:
 #            - Path=/api/v1/picture/**
-        - id: shop-backend-api
-          uri: lb://SHOP-BACKEND-API
+        - id: shop_backend_api
+          uri: lb://SHOP_BACKEND_API
           predicates:
             - Path=/api/v1/**
