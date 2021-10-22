@@ -38,17 +38,21 @@ public class OrderServiceImpl implements OrderService {
 
     private final RabbitTemplate rabbitTemplate;
 
+    private final SimpMessagingTemplate template;
+
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository,
                             CartService cartService,
                             UserRepository userRepository,
                             ProductRepository productRepository,
-                            RabbitTemplate rabbitTemplate) {
+                            RabbitTemplate rabbitTemplate,
+                            SimpMessagingTemplate template) {
         this.orderRepository = orderRepository;
         this.cartService = cartService;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.rabbitTemplate = rabbitTemplate;
+        this.template = template;
     }
 
     public List<OrderDto> findOrdersByUsername(String username) {
@@ -114,5 +118,6 @@ public class OrderServiceImpl implements OrderService {
     @RabbitListener(queues = "processed.order.queue")
     public void receive(OrderMessage order) {
         logger.info("Order with id '{}' state change to '{}'", order.getId(), order.getState());
+        template.convertAndSend("/order_out/order", order);
     }
 }
