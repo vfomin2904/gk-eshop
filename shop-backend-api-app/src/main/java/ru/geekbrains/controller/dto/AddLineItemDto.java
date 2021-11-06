@@ -1,13 +1,19 @@
 package ru.geekbrains.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AddLineItemDto {
 
+    @JsonProperty
     private Long productId;
 
+    @JsonProperty
     private Integer qty;
 
+    @JsonProperty
     private String color;
 
+    @JsonProperty
     private String material;
 
     public AddLineItemDto() {
